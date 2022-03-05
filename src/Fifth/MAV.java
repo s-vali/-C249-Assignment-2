@@ -1,3 +1,8 @@
+/**
+ * Part: I & II
+ * Written by: Sofia Valiante (40191897)
+ */
+
 package Fifth;
 
 import Fourth.UAV;
@@ -7,8 +12,8 @@ public class MAV extends UAV {
 	/**
 	 * Variables
 	 */
-	protected String model;
-	protected double size;
+	private String model;
+	private double size;
 	
 	/**
 	 * Constructors
@@ -27,8 +32,7 @@ public class MAV extends UAV {
 		this.size = size;
 	}
 	//copy
-	public MAV(Object o) {
-		MAV copy = (MAV)o;
+	public MAV(MAV copy) {
 		this.weight = copy.weight;
 		this.price = copy.price;
 		this.model = copy.model;
@@ -37,7 +41,6 @@ public class MAV extends UAV {
 	
 	/**
 	 * Getters and Setters
-	 * @return
 	 */
 	public String getModel() {
 		return model;
@@ -53,8 +56,8 @@ public class MAV extends UAV {
 	}
 	
 	/**
-	 * toString()
-	 * @return 
+	 * toString() method that prints all of the attributes of the class
+	 * @return String
 	 */
 	@Override
 	public String toString() {
@@ -64,7 +67,10 @@ public class MAV extends UAV {
 	}
 	
 	/**
-	 * Equals()
+	 * Equals() method tests if two objects are of the same class,
+	 * if not then false is returned, if so then both objects are 
+	 * compared. The expected result is outputted. 
+	 * @return boolean
 	 */
 	@Override
 	public boolean equals(Object o) {

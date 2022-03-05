@@ -1,9 +1,17 @@
+/**
+ * Part: I & II
+ * Written by: Sofia Valiante (40191897)
+ */
+
 package Second;
 
 import First.Airplane;
 
 public class Helicopter extends Airplane {
 	
+	/**
+	 * Variables
+	 */
 	protected int nbOfCylinders;
 	protected int creationYear;
 	protected int passengerCapacity;
@@ -28,8 +36,7 @@ public class Helicopter extends Airplane {
 		this.passengerCapacity = passengerCapacity;
 	}
 	//copy
-	public Helicopter(Object o) {
-		Helicopter copy = (Helicopter)o;
+	public Helicopter(Helicopter copy) {
 		this.brand = copy.brand;
 		this.price = copy.price;
 		this.horsepower = copy.horsepower;
@@ -40,7 +47,6 @@ public class Helicopter extends Airplane {
 	
 	/**
 	 * Getters and Setters
-	 * @return
 	 */
 	public int getNbOfCylinders() {
 		return nbOfCylinders;
@@ -62,8 +68,8 @@ public class Helicopter extends Airplane {
 	}
 	
 	/**
-	 * toString()
-	 * @return
+	 * toString() method that prints all of the attributes of the class
+	 * @return String
 	 */
 	@Override
 	public String toString() {
@@ -74,7 +80,9 @@ public class Helicopter extends Airplane {
 	}
 	
 	/**
-	 * equals()
+	 * Equals() method tests if two objects are of the same class,
+	 * if not then false is returned, if so then both objects are 
+	 * compared. The expected result is outputted. 
 	 * @return boolean
 	 */
 	@Override
@@ -85,9 +93,4 @@ public class Helicopter extends Airplane {
 		else
 			return false;
 	}
-	
-	
-	
-	
-	
 }

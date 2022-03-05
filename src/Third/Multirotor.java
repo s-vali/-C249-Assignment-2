@@ -1,3 +1,8 @@
+/**
+ * Part: I & II
+ * Written by: Sofia Valiante (40191897)
+ */
+
 package Third;
 
 import Second.Helicopter;
@@ -5,7 +10,10 @@ import Second.Quadcopter;
 
 public class Multirotor extends Helicopter {
 
-	protected int nbOfRotors;
+	/**
+	 * Variables
+	 */
+	private int nbOfRotors;
 	
 	/**
 	 * Constructors
@@ -26,8 +34,7 @@ public class Multirotor extends Helicopter {
 		this.nbOfRotors = nbOfRotors;
 	}
 	//copy
-	public Multirotor(Object o) {
-		Multirotor copy = (Multirotor)o;
+	public Multirotor(Multirotor copy) {
 		this.brand = copy.brand;
 		this.price = copy.price;
 		this.horsepower = copy.horsepower;
@@ -39,7 +46,6 @@ public class Multirotor extends Helicopter {
 	
 	/**
 	 * Getters and Setters
-	 * @return
 	 */
 	public int getNbOfRotors() {
 		return nbOfRotors;
@@ -49,8 +55,8 @@ public class Multirotor extends Helicopter {
 	}
 	
 	/**
-	 * toString()
-	 * @return
+	 * toString() method that prints all of the attributes of the class.
+	 * @return String
 	 */
 	@Override
 	public String toString() {
@@ -59,7 +65,9 @@ public class Multirotor extends Helicopter {
 	}
 	
 	/**
-	 * equals()
+	 * Equals() method tests if two objects are of the same class,
+	 * if not then false is returned, if so then both objects are 
+	 * compared. The expected result is outputted. 
 	 * @return boolean
 	 */
 	@Override

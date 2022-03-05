@@ -1,3 +1,8 @@
+/**
+ * Part: I & II
+ * Written by: Sofia Valiante (40191897)
+ */
+
 package Fifth;
 
 import Fourth.UAV;
@@ -8,8 +13,8 @@ public class AgriculturalDrone extends UAV {
 	/**
 	 * Variables
 	 */
-	protected String brand;
-	protected int carryCapacity;
+	private String brand;
+	private int carryCapacity;
 	
 	/**
 	 * Constructors
@@ -28,8 +33,7 @@ public class AgriculturalDrone extends UAV {
 		this.carryCapacity = carryCapacity;	
 	}
 	//copy
-	public AgriculturalDrone(Object o) {
-		AgriculturalDrone copy = (AgriculturalDrone)o;
+	public AgriculturalDrone(AgriculturalDrone copy) {
 		this.weight = copy.weight;
 		this.price = copy.price;
 		this.brand = copy.brand;
@@ -38,7 +42,6 @@ public class AgriculturalDrone extends UAV {
 	
 	/**
 	 * Getters and Setters
-	 * @return
 	 */
 	public String getBrand() {
 		return brand;
@@ -54,7 +57,8 @@ public class AgriculturalDrone extends UAV {
 	}
 	
 	/**
-	 * toString()
+	 * toString() method that prints all of the attributes of the class
+	 * @return String
 	 */
 	@Override
 	public String toString() {
@@ -65,23 +69,24 @@ public class AgriculturalDrone extends UAV {
 	}
 	
 	/**
-	 * Equals()
+	 * Equals() method tests if two objects are of the same class,
+	 * if not then false is returned, if so then both objects are 
+	 * compared. The expected result is outputted. 
+	 * @return boolean
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if(o == null) { //if o's reference is null - FIX THIS
+		if(o == null) {
 			return false;
 		} else if(this.getClass() != o.getClass()){ //or (this.getClass() == o.getClass()
 			return false;
 		}
 		else { //object is of the class and not null
 			AgriculturalDrone obj = (AgriculturalDrone) o;
-			//System.out.println("obj.brand: " + obj.brand + " obj.carryCapacity: " + obj.carryCapacity + " obj.price: " + obj.price);
 			if(this.weight == obj.weight & this.price == obj.price & this.carryCapacity == obj.carryCapacity & (this.brand.compareToIgnoreCase(obj.brand)) == 0) {
 				return true;
 			} else
 				return false;
 		}
 	}
-
 }

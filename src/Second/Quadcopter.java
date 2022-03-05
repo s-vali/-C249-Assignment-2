@@ -1,8 +1,16 @@
+/**
+ * Part: I & II
+ * Written by: Sofia Valiante (40191897)
+ */
+
 package Second;
 
 public class Quadcopter extends Helicopter {
 
-	protected int maxFlyingSpeed;
+	/**
+	 * Variables
+	 */
+	private int maxFlyingSpeed;
 	
 	/**
 	 * Constructors
@@ -23,8 +31,7 @@ public class Quadcopter extends Helicopter {
 		this.maxFlyingSpeed = maxFlyingSpeed;
 	}
 	//copy
-	public Quadcopter(Object o) {
-		Quadcopter copy = (Quadcopter)o;
+	public Quadcopter(Quadcopter copy) {
 		this.brand = copy.brand;
 		this.price = copy.price;
 		this.horsepower = copy.horsepower;
@@ -35,7 +42,6 @@ public class Quadcopter extends Helicopter {
 	}
 	/**
 	 * Getters and Setters
-	 * @return
 	 */
 	public int getMaxFlyingSpeed() {
 		return maxFlyingSpeed;
@@ -45,8 +51,8 @@ public class Quadcopter extends Helicopter {
 	}
 	
 	/**
-	 * toString()
-	 * @return
+	 * toString() method that prints all of the attributes of the class
+	 * @return String
 	 */
 	public String toString() {
 		return super.toString()
@@ -54,7 +60,9 @@ public class Quadcopter extends Helicopter {
 	}
 	
 	/**
-	 * equals()
+	 * Equals() method tests if two objects are of the same class,
+	 * if not then false is returned, if so then both objects are 
+	 * compared. The expected result is outputted. 
 	 * @return boolean
 	 */
 	@Override

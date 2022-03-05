@@ -1,3 +1,8 @@
+/**
+ * Part: I & II
+ * Written by: Sofia Valiante (40191897)
+ */
+
 package Fourth;
 
 import Fifth.AgriculturalDrone;
@@ -24,15 +29,13 @@ public class UAV {
 		this.price = price;
 	}
 	//copy
-	public UAV(Object o) {
-		UAV copy = (UAV)o;
+	public UAV(UAV copy) {
 		this.weight = copy.weight;
 		this.price = copy.price;
 	}
 	
 	/**
 	 * Getters and Setters
-	 * @return
 	 */
 	public double getWeight() {
 		return weight;
@@ -48,7 +51,8 @@ public class UAV {
 	}
 	
 	/**
-	 * toString()
+	 * toString() method that prints all of the attributes of the class
+	 * @return String
 	 */
 	public String toString() {
 		return "This " + getClass().getSimpleName() + " has a weight of " + weight 
@@ -56,17 +60,19 @@ public class UAV {
 	}
 	
 	/**
-	 * 
+	 * Equals() method tests if two objects are of the same class,
+	 * if not then false is returned, if so then both objects are 
+	 * compared. The expected result is outputted. 
+	 * @return boolean
 	 */
 	public boolean equals(Object o) {
-		if(o == null) { //if o's reference is null - FIX THIS
+		if(o == null) { 
 			return false;
 		} else if(this.getClass() != o.getClass()){ //or (this.getClass() == o.getClass()
 			return false;
 		}
 		else { //object is of the class and not null
 			UAV obj = (UAV) o;
-			//System.out.println("obj.brand: " + obj.brand + " obj.carryCapacity: " + obj.carryCapacity + " obj.price: " + obj.price);
 			if(this.weight == obj.weight & this.price == obj.price) {
 				return true;
 			} else
@@ -74,4 +80,8 @@ public class UAV {
 		}
 	}
 	
+	public static UAV uavForArray(Object o) {
+		UAV currentFlyingObj = (UAV)o;
+		return currentFlyingObj;
+	}
 }

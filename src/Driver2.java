@@ -1,99 +1,145 @@
+/**
+ * Part: II
+ * @author Sofia Valiante (40191897)
+ * Due: March 4th 2022
+ * COMP 249
+ * 
+ * This java file is the second driver that contains the copyFlyingObjects()
+ * method and a main() to create an array of multiple flying objects from
+ * each class and apply the copyFlyingObjects() method, which is a static 
+ * method that can be called by the class and which takes the array to copy
+ * as its argument.
+ */
+
 import First.Airplane;
 import Second.Helicopter;
 import Second.Quadcopter;
 import Third.Multirotor;
 import Fourth.UAV;
-
-import java.lang.reflect.Constructor;
-
 import Fifth.AgriculturalDrone;
 import Fifth.MAV;
 
 public class Driver2 {
-
-	public static void copyFlyingObjects(Object[] arrayToCopy) {
+	
+	
+	/**
+	 * The method is static and serves to copy the contents of
+	 * the array passed to it through the use of a copy constructor
+	 * of each class type within its array of type Object. The method
+	 * utilizes a switch statement which confirms the class type of the
+	 * current indexed object of the array and then uses the respective
+	 * copy constructor to copy the current indexed object to the new
+	 * array of the size of the passed array as argument. 
+	 * 
+	 * @param arrayToCopy
+	 * @return Object[]
+	 */
+	public static Object[] copyFlyingObjects(Object[] arrayToCopy) {
 		
 		Object[] copyArray = new Object[arrayToCopy.length];
 		
-		for (int i =0; i < arrayToCopy.length; i++) {
-			//copyArray = (Object[]) (arrayToCopy[i]); //added cast of (Object[]) to the copyArray of type Object
-			//System.out.println(copyArray[i].getClass());	
-			
+		for (int i = 0; i < arrayToCopy.length; i++) {
 			String className = arrayToCopy[i].getClass().getSimpleName();
-			System.out.println(className);
-			
-			
 			switch(className) {
-				case "Airplane": copyArray[i] = new Airplane(arrayToCopy[i]); break;
-				case "Helicopter": copyArray[i] = new Helicopter(arrayToCopy[i]); break;
-				case "Quadcopter": copyArray[i] = new Quadcopter(arrayToCopy[i]); break; 
-				case "Multirotor": copyArray[i] = new Multirotor(arrayToCopy[i]); break; 
-				case "UAV": copyArray[i] = new UAV(arrayToCopy[i]); break;
-				case "MAV": copyArray[i] = new MAV(arrayToCopy[i]); break;
-				case "AgriculturalDrone": copyArray[i] = new AgriculturalDrone(arrayToCopy[i]); break;
-				default: System.out.println("The program failed. Program will terminate."); System.exit(0);
+				case "Airplane": {
+					Airplane copy = (Airplane)arrayToCopy[i]; 
+					copyArray[i] = new Airplane(copy); 
+					break;
+				}
+				case "Helicopter": {
+					Helicopter copy = (Helicopter)arrayToCopy[i]; 
+					copyArray[i] = new Helicopter(copy); 
+					break;
+				}
+				case "Quadcopter": {
+					Quadcopter copy = (Quadcopter)arrayToCopy[i];
+					copyArray[i] = new Quadcopter(copy); 
+					break; 
+				}
+				case "Multirotor": {
+					Multirotor copy = (Multirotor)arrayToCopy[i];
+					copyArray[i] = new Multirotor(copy); 
+					break; 
+				}
+				case "UAV": {
+					UAV copy = (UAV)arrayToCopy[i];
+					copyArray[i] = new UAV(copy); 
+					break;
+				}
+				case "MAV": {
+					MAV copy = (MAV)arrayToCopy[i];
+					copyArray[i] = new MAV(copy); 
+					break;
+				}
+				case "AgriculturalDrone": {
+					AgriculturalDrone copy = (AgriculturalDrone)arrayToCopy[i];
+					copyArray[i] = new AgriculturalDrone(copy); 
+					break;
+				}
+				default: {
+					System.out.println("No such flying object exists. Program will terminate. "); 
+					System.exit(0); 
+					break;
+				}
 			}//end of switch
-			
-			
-			
-			
-			
-			
-			
-			
-			Object ex = arrayToCopy[i].getClass();
-			System.out.println(ex.toString());
-			
-			copyArray[i] = (Object)arrayToCopy[i]; //Now the reference for each flying object is held within the array but the info isnt copied for each object
-			Airplane airplane1 = new Airplane(copyArray[i]);
-			
-			//downcast into the constructor for each object?
-			
-			/*
-			Object[] copyArray2 = new Object[copyArray.length + 1];
-			System.arraycopy(copyArray, 0, copyArray2, 0, copyArray.length);
-			copyArray2[copyArray.length] = ex;
-			*/
-		}
-		
+		}//end of for loop
+		System.out.println("AFTER COPYING THE ARRAY: ");
 		for(int i = 0; i < copyArray.length; i++) {
 			System.out.println(copyArray[i].toString());
 		}
-		
-		
-		
-		//Create copy array of type Object
-		//Object[] copyArray = new Object[arrayToCopy.length];
-		/*
-		for(int i = 0; i < copyArray.length; i++) {
-			
-			//upcasting
-			//Object obj = getObject();
-			
-			Object castedObjFromArrayToCopy = (Object)arrayToCopy[i];
-			
-			//cast child to object and then run the casted child to Object obkect to be in the copy/object array
-			
-			copyArray[i] = 0;//new arrayToCopy[i].getClass()(arrayToCopy[i]);
-		*/
-		}
-
-	
+		return copyArray;
+	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		Object[] flyingObjectsArray2 = { 
-				new Airplane("Canada Dry Air", 4000000000.0, 50),
+		/*
+		 * WELCOME MESSAGE 
+		 */
+		System.out.println();
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("             WELCOME TO DRIVER2 PROGRAM           ");
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println();
+		
+		/*
+		 * COPY AN ARRAY USING COPYFLYINGOBJECTS()
+		 */
+		//Create the array to copy
+		Object[] flyingObjectsArrayToCopy = { 
+				new Airplane("Canada Air", 4000000000.0, 50),
 				new Helicopter("HeliAir", 380000.0, 25, 2, 2016, 6),
 				new Quadcopter("QuadAir", 40000.0, 13, 1, 2020, 2, 80),
 				new Multirotor("MultiRotorAir", 5460.0, 76, 4, 2017, 1, 4),
 				new Multirotor("MultiRotorAir", 5460.0, 76, 4, 2017, 1, 4),
-				new Airplane("Stellar Airlines", 5000.0, 28)
+				new Airplane("Stellar Airlines", 5000.0, 28),
+				new UAV(), 
+				new MAV(79.8, 2450, "MAV Model", 67),
+				new AgriculturalDrone(57.5, 609, "Drone Farms", 60),
+				new MAV(65.98, 54, "M Brand", 78),
+				new AgriculturalDrone(),
+				new UAV(565, 7000),
+				new Airplane("American ExpressWay", 54830202.05, 100),
+				new Quadcopter(),
+				new AgriculturalDrone(109, 800, "MX-240", 50),
+				new UAV(67, 15000)
 				};
-				
-		copyFlyingObjects(flyingObjectsArray2);
 		
+		//Print information of array
+		System.out.println("BEFORE COPYING THE ARRAY: ");
+		for(int i = 0; i < flyingObjectsArrayToCopy.length; i++) {
+			System.out.println(flyingObjectsArrayToCopy[i].toString());
+		}System.out.println();
+		
+		//Call copyFlyingObjects method
+		copyFlyingObjects(flyingObjectsArrayToCopy);
+		
+		/*
+		 * END OF PROGRAM
+		 */
+		System.out.println();
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("                  END OF PROGRAM                  ");
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
 	}
 
 }
